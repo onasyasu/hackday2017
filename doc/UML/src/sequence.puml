@@ -1,0 +1,28 @@
+@startuml
+actor UserA
+UserA -> dashButtonA : click
+participant deviceWithSpeakerA
+participant "server(MBA)" as server
+dashButtonA -> server
+server -> deviceWithSpeakerB
+participant dashButtonB
+actor UserB
+deviceWithSpeakerB -> UserB : helthInfoSound
+UserB -> UserB : runnning
+UserB -> deviceWithSpeakerB
+deviceWithSpeakerB -> deviceWithSpeakerB : checkThreshold
+deviceWithSpeakerB -> deviceWithSpeakerB : stopSound
+deviceWithSpeakerB -> server : flagB
+
+UserB -> dashButtonB : click
+dashButtonB -> server
+server -> deviceWithSpeakerA
+deviceWithSpeakerA -> UserA : helthInfoSound
+UserA -> UserA : runnning
+UserA -> deviceWithSpeakerA
+deviceWithSpeakerA -> deviceWithSpeakerA : checkThreshold
+deviceWithSpeakerA -> deviceWithSpeakerA : stopSound
+deviceWithSpeakerA -> server : flagA
+
+@enduml
+ctr + alt + p
