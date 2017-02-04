@@ -40,3 +40,41 @@ else
  mac -> razpiA : ng
  ```
 
+# stateの流れ
+```
+---------
+3状態のflagのパターン
+
+音声を流すタイミングのフラグ
+押せるかどうかの判定のフラグ
+
+flag='A' : Aさんがボタンを押せるという意味
+
+init: flag='A' : server
+
+userA->dashButtonA : click
+dashButtonA -> razPiA
+razPiA -> server : click ok?
+
+if flag='A' : serverが判定 | getClickab
+  server -> razPiA : 200 ok
+  server -> server : flag='B'
+else
+  server -> razPiA : 200 ng
+  razPiA -> userA : だめだよ by speaker
+
+while do
+  razPiB -> server : request/s
+  if flag='B'
+   razPiB -> speakerB : sound
+   flag='null'
+   userB -> userB : running
+   while do
+    razPiB -> UserB : runningの監視
+   done
+   flag='B'
+  else
+done
+
+---------
+```
