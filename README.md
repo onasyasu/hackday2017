@@ -1,1 +1,9 @@
 # hackday2017
+# 決定
+- 足踏みシステムを2人分作る
+- User間のやりとり
+ - UserAが押してUserBが走ったあとUserBがUserAに対して押せるようになるか（dashButtonでやりあい）
+- 流す音
+ - 現在の歩数（20区切りで、上限はとりあえず100）
+ - text2speech(拡張性を考慮して)
+ - 開始音終了音(startとgoal)
